@@ -18,13 +18,19 @@ These steps assume you have already run `npx create-react-app music-app`.
    cd /workspaces/c2c-full-stack-102/lesson-02/music-app
    ```
 
-3. Start the dev server:
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the dev server:
 
    ```bash
    npm start
    ```
 
-4. In Codespaces, open the **Ports** tab and open port `3000` in the browser.
+5. In Codespaces, open the **Ports** tab and open port `3000` in the browser.
 
 ## 2) useState Setup Guide
 
