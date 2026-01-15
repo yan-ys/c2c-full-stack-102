@@ -27,7 +27,7 @@ Starter project for this lesson is in:
 From the repo root:
 
 ```bash
-cd lesson-05/app/client
+cd /workspaces/c2c-full-stack-102/lesson-05/app/client
 npm install
 npm start
 ```
@@ -36,7 +36,7 @@ Keep the dev server running while you work so you can see changes immediately.
 
 ### 3) Add imports to `App.js`
 
-In `lesson-05/app/client/src/App.js`, add these imports:
+In `/workspaces/c2c-full-stack-102/lesson-05/app/client/src/App.js`, add these imports:
 
 ```js
 import React from "react";
