@@ -1,6 +1,9 @@
 import "./App.css";
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [searchInput, setSearchInput] = useState("");
+  const [accessToken, setAccessToken] = useState("");
   return (
     <div className="App">
       <h1>MUSIC APP</h1>
