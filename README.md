@@ -25,6 +25,26 @@ The main course project is an **e-commerce website** backed by a working databas
 
 7. Open and follow the lesson instructions inside that folder (for example, `lesson-01/README.md`).
 
+## Sync your fork to the latest course code
+
+Course staff will update this repository often. If your fork is behind, you can sync it from the GitHub website - do this at the beginning of every class.
+
+### Syncing a fork branch from the web UI
+
+1. On GitHub, go to the main page of **your fork** of this repository.
+2. Above the file list, click the **Sync fork** dropdown.
+3. Review the incoming commits, then click **Update branch**.
+4. Back in your Codespace terminal, pull the latest changes into your Codespace:
+
+   ```bash
+   cd /workspaces/c2c-full-stack-102
+   git pull
+   ```
+
+If the upstream changes conflict with your changes, GitHub will prompt you to create a pull request to resolve conflicts.
+
+Official guide (web UI): https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-web-ui
+
 ## Lessons
 
 | Lesson    | Description (code-focused)                                                  | Folder                 |
