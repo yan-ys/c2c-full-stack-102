@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { Button, Container, Form } from "react-bootstrap";
+import Search from "./Search";
 
 function App() {
   const [firstName, setFirstName] = useState("");
@@ -11,7 +12,7 @@ function App() {
   const onSubmitCustomer = (event) => {
     event.preventDefault();
 
-    Axios.post("http://localhost:3001/api/insert", {
+    Axios.post("/api/insert", {
       firstName: firstName,
       lastName: lastName,
       email: email,
@@ -74,6 +75,11 @@ function App() {
             Submit
           </Button>
         </Form>
+      </Container>
+
+      <Container className="border rounded p-3 mb-3" id="search">
+        <h2 className="h4">Search</h2>
+        <Search />
       </Container>
     </Container>
   );
