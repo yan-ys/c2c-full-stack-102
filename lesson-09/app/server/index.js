@@ -21,13 +21,31 @@ const db = mysql.createPool({
 });
 
 // TODO: Implement /submit-form to handle form data and insert into your database
-app.post('/submit-form', (req, res) => {
-  res.status(501).json({ message: 'Not implemented yet' });
+app.post("/submit-form", (req, res) => {
+  const { firstname, lastname, email, subject } = req.body;
+
+  if (!firstname || !lastname || !email || !subject) {
+    return res.status(400).json({ message: "All fields are required." });
+  }
+
+  const sql = `
+    INSERT INTO contact (First_Name, Last_Name, Email, Message)
+    VALUES (?, ?, ?, ?)
+  `;
+
+  db.execute(sql, [firstname, lastname, email, subject], (err, results) => {
+    if (err) {
+      console.error("DB insert error:", err);
+      return res.status(500).json({ message: "Database error." });
+    }
+    return res
+      .status(201)
+      .json({ message: "Form data inserted!", id: results.insertId });
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on port ${PORT}`);
 });
 
 // Optional: quick health check
-app.get('/health', (req, res) => res.json({ ok: true }));
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
