@@ -24,7 +24,7 @@ git pull
 cd /workspaces/c2c-full-stack-102/lesson-10/app/client
 ```
 
-If needed, create `client/.env`:
+Create `client/.env`:
 
 ```bash
 cat > .env <<'EOF'
@@ -47,7 +47,7 @@ This launches the React app on **http://localhost:3000**.
 cd /workspaces/c2c-full-stack-102/lesson-10/app/server
 ```
 
-If needed, create `server/.env` (update `DB_PASSWORD` and `DB_NAME` to match your MySQL setup):
+Create `server/.env` (update `DB_PASSWORD` and `DB_NAME` to match your MySQL setup):
 
 ```bash
 cat > .env <<'EOF'
@@ -139,28 +139,44 @@ app.get("/api/ecommerce/products", (req, res) => {
 ```
 
 2. Restart your server if needed.
-3. Test the endpoint (e.g., visit `http://localhost:3001/api/ecommerce/products` in your browser or use a REST client).
+3. Test the endpoint:
+
+- In your browser, go to your Codespace server URL (e.g., `https://<your codespace name and id>-3001.app.github.dev`) and append `/api/ecommerce/products` to the end, so the full URL is `https://<your codespace name and id>-3001.app.github.dev/api/ecommerce/products`.
+- You can also use a REST client to test the endpoint.
 
 ---
 
 ## Step 4: Fetch and Display Products in the Client
 
 1. In your shopping page component (e.g., `Shopping.js`):
-   - Import `useState`, `useEffect` from React and `axios`.
-2. Set up state and fetch logic:
+   - Import `useState` and `useEffect` from React.
+   - **Import axios:**
 
-```js
-const [products, setProducts] = useState([]);
+     ```js
+     import axios from "axios";
+     ```
 
-useEffect(() => {
-  axios
-    .get("http://localhost:3001/api/ecommerce/products")
-    .then((res) => {
-      setProducts(res.data);
-    })
-    .catch((err) => console.log(err));
-}, []);
-```
+   - **Remove the unused import:**
+
+     ```js
+     // Remove this line if present:
+     // import productImg from "../images/productImg.png";
+     ```
+
+2. Set up state and fetch logic (use a relative URL for the API endpoint):
+
+   ```js
+   const [products, setProducts] = useState([]);
+
+   useEffect(() => {
+     axios
+       .get("/api/ecommerce/products")
+       .then((res) => {
+         setProducts(res.data);
+       })
+       .catch((err) => console.log(err));
+   }, []);
+   ```
 
 3. Render the products:
 
