@@ -73,49 +73,24 @@ This runs the Express server with `nodemon` on **http://localhost:3001**.
 
 ## Section 1.1: Homepage Work
 
-Update your featured products list to pull from your product database. Fetch products and render a small subset (e.g., five) as “featured.”
+Update your featured products list by making changes to the `FeaturedProducts` component.
 
-Sample code:
+**Instructions:**
 
-```js
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import productImg from "../images/productImg.png";
+- **Locate the component:**
+  - Find the `FeaturedProducts` component in your client codebase (commonly in `src/components/FeaturedProducts.js` or similar).
 
-const Featured = () => {
-  const [products, setProducts] = useState([]);
+- **Where it appears:**
+  - The `FeaturedProducts` component is rendered on the main shopping page (for example, in `src/pages/Shop.js` or `src/App.js`).
+  - The area of the shopping page that displays featured products, product cards, or a gallery is directly controlled by this component.
 
-  useEffect(() => {
-    axios
-      .get("/api/ecommerce/products")
-      .then((res) => {
-        const list = Array.isArray(res.data) ? res.data : [];
-        setProducts(list.slice(0, 5));
-      })
-      .catch(() => setProducts([]));
-  }, []);
+- **What to update:**
+  - Update the logic in `FeaturedProducts` to fetch products from your product database and render a small subset (e.g., five) as “featured.”
+  - Any changes you make to this component will be visible in the featured products section of the shopping page.
 
-  return (
-    <>
-      <div id="gallery-head">
-        <h1>Gallery</h1>
-      </div>
-      <div id="card-container">
-        {products.map((product, i) => (
-          <div className="featured-card" key={product.id ?? i}>
-            <img className="img" src={product.image_url || productImg} alt="" />
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <p>{product.price}</p>
-          </div>
-        ))}
-      </div>
-    </>
-  );
-};
-
-export default Featured;
-```
+**Tip:**
+- Focus on how the component receives product data and how it displays each product.
+- You do not need to include finished code here—use this README as a guide to help you identify what needs to be changed and where those changes will be visible in the app.
 
 ---
 
